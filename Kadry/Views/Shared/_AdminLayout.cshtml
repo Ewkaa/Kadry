@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+
+            <div class="col-4 p-0">
+                <div class="card h-100 m-0">
+                    <div class="card-header">
+                        <h3>Menu</h3>
+                    </div>
+                    <div class="card-body">
+                        <button class="btn btn-primary w-100 mt-2"onclick="location.href = '@Url.Action("CreateEmployer","Admin")'">
+                            Dodaj pracownika
+                        </button>
+                        <button class="btn btn-primary w-100 mt-2" onclick="location.href = '@Url.Action("EmployerList","Admin")'">
+                            Lista pracowników
+                        </button>
+                        <button class="btn btn-primary w-100 mt-2"  onclick="location.href = '@Url.Action("ContractTypeList","Admin")'">
+                            Typy umów
+                        </button>
+                        <button class="btn btn-primary w-100 mt-2"onclick="location.href = '@Url.Action("WorkplaceList","Admin")'">
+                            Stanowisko pracy
+                        </button>
+                        <button class="btn btn-danger w-100 mt-2"onclick="location.href = '@Url.Action("Logout","Admin")'">
+                            Wyloguj
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col p-0">
+                <div class="card h-100 m-0 ">
+                    <div class="card-header">
+                        <h3>@RenderSection("Title", false)</h3>
+
+                    </div>
+                    <div class="card-body">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

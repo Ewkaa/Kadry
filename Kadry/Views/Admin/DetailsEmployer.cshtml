@@ -1,0 +1,225 @@
+﻿
+@model Kadry.Models.Employeer
+@{
+    ViewBag.Title = "DetailsEmployer";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+@section Title{
+    Szczegóły pracownika
+}
+
+
+
+<div class="row">
+    <div class="col-7">
+
+        <p>
+            @Html.LabelFor(m => m.Login.Username, "Nazwa użytkownika: ")
+            @Html.DisplayFor(m => m.Login.Username, new { htmlAttributes = new { @class = "form-control" } })
+        </p>
+
+        <p>
+
+            @Html.DisplayFor(m => m.Login.Admin, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.LabelFor(m => m.Login.Admin, "Administrator")
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Firstname, "Imię: ")
+            @Html.DisplayFor(m => m.Firstname, new { htmlAttributes = new { @class = "form-control" } })
+        </p>
+
+
+        <p>
+            @Html.LabelFor(m => m.MiddleName, "Drugie imię: ")
+            @Html.DisplayFor(m => m.MiddleName, new { htmlAttributes = new { @class = "form-control" } })
+        </p>
+
+        <p>
+            @Html.LabelFor(m => m.Surname, "Nazwisko: ")
+            @Html.DisplayFor(m => m.Surname, new { htmlAttributes = new { @class = "form-control" } })
+        </p>
+
+        <p>
+            @Html.LabelFor(m => m.Pesel, "Pesel: ")
+            @Html.DisplayFor(m => m.Pesel, new { htmlAttributes = new { @class = "form-control" } })
+        </p>
+
+        <p>
+            @Html.LabelFor(m => m.Birthday, "Data urodzenia: ")
+            @Html.Raw(Model.Birthday.ToShortDateString())
+        </p>
+
+        <p>
+            @Html.LabelFor(m => m.Sex, "Płeć: ")
+            @Html.DisplayFor(model => model.Sex.Name, new { htmlAttributes = new { @class = "form-control" } })
+        </p>
+
+        <p>
+            @Html.LabelFor(m => m.ContractType, "Typ kontraktu: ")
+            @Html.DisplayFor(model => model.ContractType.Name, new { htmlAttributes = new { @class = "form-control" } })
+
+        </p>
+
+        <p>
+            @Html.LabelFor(m => m.Holiday.RemainingHoliday, "Pozostały urlop: ")
+            @Html.DisplayFor(m => m.Holiday.RemainingHoliday, new { htmlAttributes = new { @class = "form-control" } })
+        </p>
+
+        <p>
+            @Html.LabelFor(m => m.Workplace, "Stanowisko pracy: ")
+            @Html.DisplayFor(model => model.Workplace.Name, new { htmlAttributes = new { @class = "form-control" } })
+
+
+        </p>
+
+        <p>
+            @Html.LabelFor(m => m.ContractDate, "Data zawarcia umowy: ")
+            @Html.Raw(Model.ContractDate.ToShortDateString())
+        </p>
+
+
+        <p>
+            @Html.LabelFor(m => m.ContractEndDate, "Data końca umowy: ")
+            @Html.Raw(Model.ContractEndDate.ToShortDateString())
+        </p>
+    </div>
+
+    <div class="col-5">
+        <p><button type="button" class="btn btn-primary float-right w-100 mb-2" data-toggle="modal" data-target="#HolidayManagement">Zarządzaj urlopami</button></p>
+        <p><button type="button" class="btn btn-primary float-right w-100 mb-2" data-toggle="modal" data-target="#SalaryManagement">Zarządzaj pensja</button></p>
+        <p><button type="button" class="btn btn-primary float-right w-100 mb-2" data-toggle="modal" data-target="#HoursManagement">Zarządzaj godzinami</button></p>
+        <p><button type="button" class="btn btn-primary float-right w-100 mb-2" data-toggle="modal" data-target="#MedicalManagement">Zarządzaj swiadectwem zdrowia</button></p>
+    </div>
+</div>
+
+
+<!-- Modal od zarządzania urlopami -->
+<div class="modal fade" id="HolidayManagement" tabindex="-1" role="dialog" aria-labelledby="HolidayManagementLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="HolidayManagementLabel">Zarządzaj urlopami</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @Html.HiddenFor(m => m.Holiday.Id)
+                <p>
+                    @Html.LabelFor(m => m.Holiday.HolidayAnuses, "Wykorzystany urlop: ")
+                    @Html.DisplayFor(m => m.Holiday.HolidayAnuses, new { htmlAttributes = new { @class = "form-control" } })
+                </p>
+                <p>
+                    @Html.LabelFor(m => m.Holiday.RemainingHoliday, "Pozostały urlop: ")
+                    @Html.DisplayFor(m => m.Holiday.RemainingHoliday, new { htmlAttributes = new { @class = "form-control" } })
+                </p>
+                <p>
+                    @Html.LabelFor(m => m.Holiday.Year, "Rok: ")
+                    @Html.DisplayFor(m => m.Holiday.Year, new { htmlAttributes = new { @class = "form-control" } })
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal od zarządzania wypłatami -->
+<div class="modal fade" id="SalaryManagement" tabindex="-1" role="dialog" aria-labelledby="SalaryManagementLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="SalaryManagementLabel">Zarządzaj pensja</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @Html.HiddenFor(m => m.Salary.Id)
+                <p>
+
+                    @Html.LabelFor(m => m.Salary.Base, "Podstawa: ")
+                    @Html.DisplayFor(m => m.Salary.Base, new { htmlAttributes = new { @class = "form-control" } })
+                </p>
+                <p>
+                    @Html.LabelFor(m => m.Salary.Bonus, "Premia: ")
+                    @Html.DisplayFor(m => m.Salary.Bonus, new { htmlAttributes = new { @class = "form-control" } })
+                </p>
+                <p>
+                    @Html.LabelFor(m => m.Salary.Overtime, "Nadgodziny: ")
+                    @Html.DisplayFor(m => m.Salary.Overtime, new { htmlAttributes = new { @class = "form-control" } })
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal od zarządzania godzinami -->
+<div class="modal fade" id="HoursManagement" tabindex="-1" role="dialog" aria-labelledby="HoursManagementLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="HoursManagementLabel">Zarządzaj godzinami</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @Html.HiddenFor(m => m.Hours.Id)
+
+                <p>
+                    @Html.LabelFor(m => m.Hours.HoursWorked, "Godziny przepracowane: ")
+                    @Html.DisplayFor(m => m.Hours.HoursWorked, new { htmlAttributes = new { @class = "form-control" } })
+                </p>
+                <p>
+                    @Html.LabelFor(m => m.Hours.QuantityOvertime, "Nadgodziny: ")
+                    @Html.DisplayFor(m => m.Hours.QuantityOvertime, new { htmlAttributes = new { @class = "form-control" } })
+                </p>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal od zarządzania swiadectwem -->
+<div class="modal fade" id="MedicalManagement" tabindex="-1" role="dialog" aria-labelledby="MedicalManagementLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="MedicalManagementLabel">Zarządzaj swiadectwem zdrowia</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @Html.HiddenFor(m => m.Medical.Id)
+                <p>
+                    @Html.LabelFor(m => m.Medical.ExpirationTime, "Data ważności świadectwa: ")
+                    @Html.Raw(Model.Medical.ExpirationTime.ToShortDateString())
+                </p>
+                <p>
+                    @Html.LabelFor(m => m.Medical.Number, "Numer: ")
+                    @Html.DisplayFor(m => m.Medical.Number, new { htmlAttributes = new { @class = "form-control" } })
+                </p>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

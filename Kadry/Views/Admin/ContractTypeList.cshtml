@@ -1,0 +1,35 @@
+﻿
+@model List<Kadry.Models.ContractType>
+@{
+    ViewBag.Title = "ContractTypeList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@section Title {
+    Typy umów
+}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Typ</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var e in Model)
+            {
+                <tr>
+                    <th scope="row">@Html.Name(e.Id.ToString())</th>
+                    <td>@Html.Name(e.Name)</td>
+
+                </tr>
+
+            }
+        }
+
+    </tbody>
+</table>
+<div class="float-right">
+    <button type="submit" class="btn btn-primary" onclick="location.href = '@Url.Action("AddContract","Admin")'">Dodaj</button>
+</div>

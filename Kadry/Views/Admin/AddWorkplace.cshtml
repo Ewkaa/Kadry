@@ -1,0 +1,28 @@
+﻿@model Kadry.Models.Workplace
+@{
+    ViewBag.Title = "AddContract";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@section Title{
+    Dodaj typ umowy
+}
+@{
+    using (Html.BeginForm("CreateWorkplace", "Admin"))
+    {
+        <div class="row">
+            <div class="col-7">
+                @Html.HiddenFor(m => m.Id)
+                @*@Html.LabelFor(m => m.Login.Id)
+                    @Html.EditorFor(m => m.Login.Id, new {htmlAttributes = new {@class = "form-control"}})*@
+                <p>
+                    @Html.LabelFor(m => m.Name, "Nazwa: ")
+                    @Html.EditorFor(m => m.Name, new { htmlAttributes = new { @class = "form-control" } })
+                </p>
+                <div class="float-right">
+                    <button type="submit" class="btn btn-primary ">Dodaj</button>
+
+                </div>
+            </div>
+        </div>
+    }
+}

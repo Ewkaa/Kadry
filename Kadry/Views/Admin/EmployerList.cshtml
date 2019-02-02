@@ -1,0 +1,43 @@
+﻿@model List<Kadry.Models.Employeer>
+@{
+    ViewBag.Title = "EmployerList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@section Title {
+    Lista pracowników
+}
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Imię</th>
+        <th scope="col">Nazwisko</th>
+        <th scope="col">Drugie imię</th>
+        <th scope="col">Pesel</th>
+        <th scope="col">Data zawarcia umowy</th>
+        <th scope="col">Data końca umowy</th>
+        <th scope="col">Akcja</th>
+    </tr>
+    </thead>
+    <tbody>
+    @{
+        foreach (var e in Model)
+        {
+            <tr onclick="location.href = '@Url.Action("DetailsEmployer","Admin",new {e.Id})'">
+                <th scope="row">@Html.Name(e.Id.ToString())</th>
+                <td>@Html.Name(e.Firstname)</td>
+                <td>@Html.Name(e.Surname)</td>
+                <td>@Html.Name(e.MiddleName)</td>
+                <td>@Html.Name(e.Pesel)</td>
+                <td>@Html.Name(e.ContractDate.ToShortDateString())</td>
+                <td>@Html.Name(e.ContractEndDate.ToShortDateString())</td>
+                <td>  <button class="btn btn-danger btn-sm" onclick="location.href = '@Url.Action("RemoveEmployer","Admin",new {e.Id})'">
+                    Usuń
+                </button></td>
+            </tr>
+                        
+        }
+    }
+    
+    </tbody>
+</table>

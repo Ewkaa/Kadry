@@ -1,0 +1,68 @@
+﻿@using System.Globalization
+@model Kadry.Models.Employeer
+<div class="row">
+    <div class="col">
+
+        <p>
+            @Html.LabelFor(m => m.Firstname, "Imię: ")
+            @Html.Name(Model.Firstname)
+        </p>
+        @{
+            if (string.IsNullOrEmpty(Model.MiddleName))
+            {
+                <p>
+                    @Html.LabelFor(m => m.MiddleName, "Drugie imię :")
+                    @Html.Name(Model.MiddleName)
+                </p>
+            }
+        }
+        <p>
+            @Html.LabelFor(m => m.Surname, "Nazwisko: ")
+            @Html.Name(Model.Surname)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Pesel, "Pesel: ")
+            @Html.Name(Model.Pesel)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Birthday, "Data urodzenia: ")
+            @Html.Name(Model.Birthday.ToShortDateString())
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Sex.Name, "Płeć: ")
+            @Html.Name(Model.Sex.Name)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Workplace.Name, "Stanowisko pracy: ")
+            @Html.Name(Model.Workplace.Name)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Holiday.RemainingHoliday, "Pozostały urlop: ")
+            @Html.Name(Model.Holiday.RemainingHoliday.ToString())
+        </p>
+        <p>
+            @Html.LabelFor(m => m.ContractType.Name, "Typ umowy: ")
+            @Html.Name(Model.ContractType.Name)
+        </p>
+
+        <p>
+            @Html.LabelFor(m => m.Salary.Total, "Wypłata: ")
+            @Html.Name(Model.Salary.Total.ToString(CultureInfo.InvariantCulture))
+        </p>
+
+        <p>
+            @Html.LabelFor(m => m.Hours.HoursWorked, "Godziny przepracowane: ")
+            @Html.Name(Model.Hours.HoursWorked.ToString(CultureInfo.InvariantCulture))
+        </p>
+
+        <p>
+            @Html.LabelFor(m => m.ContractDate, "Data zawarcia umowy:")
+            @Html.Name(Model.ContractDate.ToShortDateString())
+        </p>
+
+        <p>
+            @Html.LabelFor(m => m.ContractEndDate, "Data końca umowy: ")
+            @Html.Name(Model.ContractEndDate.ToShortDateString())
+        </p>
+    </div>
+</div>

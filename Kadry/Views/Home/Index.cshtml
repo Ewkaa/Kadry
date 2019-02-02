@@ -1,0 +1,33 @@
+﻿@model Kadry.Models.Login
+@{
+    Layout = "";
+}
+
+@using (Html.BeginForm("Login", "Home"))
+{
+<div class="row">
+    <div class="col">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Logowanie</h5>
+
+               
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Username)
+                    @Html.TextBoxFor(m => m.Username)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password)
+                    <br />
+                    @Html.PasswordFor(m => m.Password)
+                </div>
+
+                <button type="submit" class="btn-sm btn-primary float-right">Zaloguj</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+}
